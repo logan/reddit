@@ -617,7 +617,8 @@ class PrefsPage(Reddit):
                         *a, **kw)
 
     def build_toolbars(self):
-        buttons = [NavButton(menu.options, '')]
+        buttons = [NavButton(menu.options, ''),
+                   NamedButton('apps')]
 
         if c.user.pref_private_feeds:
             buttons.append(NamedButton('feeds'))
@@ -646,8 +647,12 @@ class PrefUpdate(Templated):
         self.verify = verify
         Templated.__init__(self)
 
+class PrefApps(Templated):
+    """Preference form for managing authorized third-party applications."""
+    pass
+
 class PrefDelete(Templated):
-    """preference form for deleting a user's own account."""
+    """Preference form for deleting a user's own account."""
     pass
 
 
