@@ -30,4 +30,7 @@ from r2.lib.filters import unsafe, safemarkdown
 
   <h1>${thing.title}</h1>
   ${unsafe(safemarkdown(thing.message))}
+  %if thing.explanation:
+    &mdash; ${thing.explanation}
+  %endif
 </div>
