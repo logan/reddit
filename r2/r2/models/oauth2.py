@@ -207,7 +207,6 @@ class OAuth2AuthorizationCode(OAuth2Token):
                      used=False,
                     )
     _bool_props = ("used",)
-    _int_props = ("user_id",)
     _warn_on_partial_ttl = False
     _use_db = True
     _connection_pool = 'main'
@@ -246,7 +245,6 @@ class OAuth2AccessToken(OAuth2Token):
     _defaults = dict(scope="",
                      token_type="bearer",
                     )
-    _int_props = ("user_id",)
     _use_db = True
     _connection_pool = 'main'
 
