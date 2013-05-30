@@ -1136,6 +1136,12 @@ class FrontController(RedditController, OAuth2ResourceController):
     def GET_gold_partners(self):
         return GoldPartnersPage(_("gold partners"), show_sidebar=False).render()
 
+    @validate(user=VExistingUname('username'))
+    def GET_notes(self, user):
+        if not user or not c.user_is_loggedin or (
+            not c.user_is_admin and not c.site.is_moderator(c.user)):
+            return self.abort404()
+        return NotesPage(c.site, user).render()
 
 class FormsController(RedditController):
 

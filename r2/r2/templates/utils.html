@@ -566,7 +566,7 @@ ${unsafe(txt)}
     </div>
 </%def>
 
-<%def name="timestamp(date, since=None)">
+<%def name="timestamp(date, since=None)" buffered="True">
   ## todo: use pubdate attribute once things are <article> tags.
   ## note: comment and link templates will pass a CachedVariable stub as since.
   <time title="${long_datetime(date)}" datetime="${html_datetime(date)}">

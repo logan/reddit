@@ -4036,7 +4036,6 @@ class ModeratorPermissions(Templated):
         Templated.__init__(self, permissions_type=permissions_type,
                            editable=editable, embedded=embedded)
 
-
 class PolicyView(Templated):
     pass
 
@@ -4059,3 +4058,17 @@ class PolicyPage(BoringPage):
                                 base_path='/help')
         toolbars.append(policies_menu)
         return toolbars
+
+class NotesPage(BoringPage):
+    def __init__(self, sr, user):
+        self.sr = sr
+        self.user = user
+        self.flair = FlairListRow(self.user)
+
+        self.moderator = self.sr.get_moderator(self.user)
+        self.moderator_invite = self.sr.get_moderator_invite(self.user)
+        self.contributor = self.sr.get_contributor(self.user)
+        self.banned = self.sr.get_banned(self.user)
+
+        BoringPage.__init__(self, '%s user notes' % user.name)
+
